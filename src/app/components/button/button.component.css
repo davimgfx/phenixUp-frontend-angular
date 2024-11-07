@@ -15,7 +15,11 @@
 
 .outline {
   background-color: transparent;
-  border: 2px solid #007bff;
+  border: 2px solid var(--primary);
+}
+
+.outline:hover {
+  background-color: var(--dark_hover);
 }
 
 .text {
@@ -24,6 +28,6 @@
 }
 
 .text:hover {
-  background-color: #ababab49;
+  background-color: var(--dark_hover);
   border: 2px solid transparent;
 }

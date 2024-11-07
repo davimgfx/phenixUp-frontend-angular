@@ -6,17 +6,43 @@
   padding: 0;
   box-sizing: border-box;
   text-decoration: none;
+  list-style-type: none;
   border: none;
   outline: none;
   scroll-behavior: smooth;
   font-family: 'Poppins', serif;
 }
 
+a {
+  color: #000000;
+}
+
+a:link {
+  text-decoration: none;
+}
+
+a:visited {
+  text-decoration: none;
+}
+
+a:active {
+  text-decoration: none;
+}
+
 :root {
   --primary: #4badf9;
   --second: #ee0be8;
+  --primary_hover: #2782c9;
+  --second_hover: #b11bac;
   --dark: #1f1d2b;
+  --dark_hover: #ababab49;
+  --gray: #BEBEBE;
   --white: #ffffff;
+}
+
+.text-xxs {
+  font-size: 0.5rem; /* 12px */
+  line-height: 0.75rem; /* 16px */
 }
 
 .text-xs {
