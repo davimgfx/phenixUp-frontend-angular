@@ -1,0 +1,45 @@
+.hero {
+  max-width: 1160px;
+  padding-top: 100px;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.hero .text-hero {
+  color: var(--dark);
+}
+
+.hero .subtext-hero strong {
+  font-weight: 600;
+}
+
+.hero .link-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  font-weight: 600;
+  background: linear-gradient(90deg, var(--primary) 0%, var(--second) 100%);
+  width: fit-content;
+  color: white;
+  padding: 1.25rem 5.5rem;
+  border-radius: 0.5rem;
+}
+
+.hero .link-button:hover {
+  background: linear-gradient(
+    90deg,
+    var(--primary_hover) 0%,
+    var(--second_hover) 100%
+  );
+}
+
+.hero .extratext-hero{
+    transform: translateY(-1.25rem);
+    color: var(--gray_dark);
+    font-weight: 500;
+}

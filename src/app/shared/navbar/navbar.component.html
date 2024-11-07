@@ -2,14 +2,14 @@
   <nav class="navbar">
     <div class="navbar-items">
       <div class="left-items">
-        <div class="logo-container">
+        <a class="logo-container" routerLink="">
           <img
             src="../../../assets/logo.png"
             alt="Logo PhenixUp"
             class="image-logo" />
           <span class="name-logo"> PhenixUp</span>
           <span class="subtext-logo text-xs">Better than <br />ClickUp</span>
-        </div>
+        </a>
         <ul class="menu-container">
           <li class="menu-item text-sm">
             <a href="#">Product</a>
@@ -28,10 +28,10 @@
 
       <ul class="auth-container right-items">
         <li class="menu-item text-sm">
-          <a href="#">Log In</a>
+          <a routerLink="/login">Log In</a>
         </li>
         <li class="menu-item link-register text-sm">
-          <a href="#" class="text-white">Register</a>
+          <a routerLink="/register" class="text-white">Register</a>
         </li>
       </ul>
     </div>
