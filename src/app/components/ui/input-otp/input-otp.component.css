@@ -1,0 +1,21 @@
+.inputs-otp {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.inputs-otp .input-square {
+  width: 61px;
+  height: 61px;
+  border: 2px solid var(--gray);
+  border-radius: 0.5rem;
+  text-align: center;
+}
+
+.inputs-otp .input-square:focus {
+  border: 2px solid var(--purple_transparent);
+}
+.inputs-otp .bar {
+  display: flex;
+  align-items: center;
+  color: var(--gray);
+}

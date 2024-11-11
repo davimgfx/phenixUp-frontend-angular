@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ButtonComponent } from "../../components/button/button.component";
+import { ButtonComponent } from '../../components/ui/button/button.component';
 import { RouterLink } from '@angular/router';
 
 @Component({
@@ -7,8 +7,6 @@ import { RouterLink } from '@angular/router';
   standalone: true,
   imports: [ButtonComponent, RouterLink],
   templateUrl: './navbar.component.html',
-  styleUrl: './navbar.component.css'
+  styleUrl: './navbar.component.css',
 })
-export class NavbarComponent {
-
-}
+export class NavbarComponent {}

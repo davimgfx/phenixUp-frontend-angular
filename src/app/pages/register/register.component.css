@@ -1,0 +1,33 @@
+.main {
+  max-width: 1160px;
+  padding-top: 100px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.main .form {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  width: 540px;
+  height: auto;
+  border: 2px solid var(--gray);
+  border-radius: 0.5rem;
+  padding: 2rem;
+  gap: 1rem;
+}
+
+.form .form-input {
+  border: 2px solid var(--gray);
+  padding: 0.2rem 0.5rem;
+  border-radius: 0.5rem;
+}
+
+.svg {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+}

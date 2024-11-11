@@ -1,7 +1,7 @@
 .main {
   max-width: 1160px;
   padding-top: 100px;
-  margin: 0 auto;
+  margin: auto;
   display: flex;
   flex-direction: column;
   gap: 2rem;
@@ -16,6 +16,7 @@
   border: 2px solid var(--gray);
   border-radius: 0.5rem;
   padding: 2rem;
+  gap: 1rem;
 }
 
 .form .form-input {
@@ -24,3 +25,9 @@
   border-radius: 0.5rem;
 }
 
+.svg {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+}

@@ -1,0 +1,51 @@
+<div class="inputs-otp">
+  <input
+    #otpInput
+    type="text"
+    class="input-square text-xl"
+    maxlength="1"
+    (keydown)="onKeyDown($event, 0)"
+    (input)="onInputChange($event, 0)" />
+
+  <input
+    #otpInput
+    type="text"
+    class="input-square text-xl"
+    maxlength="1"
+    (keydown)="onKeyDown($event, 1)"
+    (input)="onInputChange($event, 1)" />
+
+  <input
+    #otpInput
+    type="text"
+    class="input-square text-xl"
+    maxlength="1"
+    (keydown)="onKeyDown($event, 2)"
+    (input)="onInputChange($event, 2)" />
+
+  <span class="bar">-</span>
+
+  <input
+    #otpInput
+    type="text"
+    class="input-square text-xl"
+    maxlength="1"
+    (keydown)="onKeyDown($event, 3)"
+    (input)="onInputChange($event, 3)" />
+
+  <input
+    #otpInput
+    type="text"
+    class="input-square text-xl"
+    maxlength="1"
+    (keydown)="onKeyDown($event, 4)"
+    (input)="onInputChange($event, 4)" />
+
+  <input
+    #otpInput
+    type="text"
+    class="input-square text-xl"
+    maxlength="1"
+    (keydown)="onKeyDown($event, 5)"
+    (input)="onInputChange($event, 5)" />
+</div>
