@@ -13,6 +13,10 @@ This website is inspired by ClickUp and focuses on Kanban-style task management 
 - Storybook
 - PostgreSQL
 
+## Figma Template
+
+👉 Live: https://www.figma.com/design/AeWAOxQu8NFanEX3uhaUKr/%F0%9F%90%A6%E2%80%8D%F0%9F%94%A5-PhenixUp?node-id=14-2113&node-type=canvas&t=4vMgodvN8fQi5AxK-0
+
 ### Check the backend:
 
 Coming soon...
