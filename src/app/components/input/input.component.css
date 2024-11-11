@@ -1,0 +1,11 @@
+.input {
+  height: 43.19px;
+  border: 2px solid var(--gray);
+  padding: 0.2rem 0.5rem;
+  border-radius: 0.5rem;
+  width: 100%;
+}
+
+.input:focus {
+    border: 2px solid var(--purple_transparent);
+}
