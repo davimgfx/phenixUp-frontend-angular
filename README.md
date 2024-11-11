@@ -9,8 +9,8 @@ This website is inspired by ClickUp and focuses on Kanban-style task management 
 ### Build with:
 
 - Angular
-- Java
 - Quarkus
+- Storybook
 - PostgreSQL
 
 ### Check the backend:
