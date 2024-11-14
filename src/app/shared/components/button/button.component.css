@@ -13,7 +13,7 @@
 .container {
   background: linear-gradient(90deg, var(--primary) 0%, var(--second) 100%);
   color: white;
-  border: 2px;
+  border: 1px;
   padding: 0.6rem 1.1rem;
 }
 
@@ -23,16 +23,17 @@
 
 .outline {
   background-color: transparent;
-  border: 2px solid var(--purple_transparent);
+  border: 1px solid var(--purple_transparent);
 }
 
 .outline:hover {
   background-color: var(--dark_hover);
+  border: 1px solid var(--purple_transparent);
 }
 
 .text {
   background-color: transparent;
-  border: 2px solid transparent;
+  border: 1px solid transparent;
 }
 
 .text:hover {

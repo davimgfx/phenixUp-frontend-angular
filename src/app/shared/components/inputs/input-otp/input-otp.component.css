@@ -6,7 +6,7 @@
 .inputs-otp .input-square {
   width: 61px;
   height: 61px;
-  border: 2px solid var(--gray);
+  border: 1px solid var(--gray);
   border-radius: 0.5rem;
   text-align: center;
 }

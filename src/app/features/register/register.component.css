@@ -8,6 +8,9 @@
 }
 
 .main .form {
+  background: var(--white);
+  z-index: 3;
+  position: relative;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -15,7 +18,7 @@
   height: auto;
   border: 2px solid var(--gray);
   border-radius: 0.5rem;
-  padding: 2rem;
+  padding: 3rem 2rem;
   gap: 1rem;
 }
 
@@ -26,6 +29,7 @@
 }
 
 .svg {
+  z-index: 2;
   position: absolute;
   bottom: 0;
   right: 0;
