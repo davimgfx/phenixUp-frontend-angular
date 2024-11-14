@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { ButtonComponent } from '../../components/ui/button/button.component';
-import { InputComponent } from '../../components/ui/input/input.component';
-import { InputOTPComponent } from "../../components/ui/input-otp/input-otp.component";
+import { ButtonComponent } from '../../shared/components/button/button.component';
+import { InputComponent } from '../../shared/components/input/input.component';
+import { InputOTPComponent } from '../../shared/components/input-otp/input-otp.component';
 
 @Component({
   selector: 'app-login',

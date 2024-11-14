@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { ButtonComponent } from '../../components/ui/button/button.component';
-import { InputComponent } from '../../components/ui/input/input.component';
+import { ButtonComponent } from '../../shared/components/button/button.component';
+import { InputComponent } from '../../shared/components/input/input.component';
 import { RouterLink } from '@angular/router';
 
 @Component({
