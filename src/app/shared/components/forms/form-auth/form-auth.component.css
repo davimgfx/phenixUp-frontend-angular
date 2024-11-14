@@ -1,0 +1,20 @@
+.form {
+  background: var(--white);
+  z-index: 3;
+  position: relative;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  width: 540px;
+  height: auto;
+  border: 2px solid var(--gray);
+  border-radius: 0.5rem;
+  padding: 3rem 2rem;
+  gap: 1rem;
+}
+
+.form .form-input {
+  border: 2px solid var(--gray);
+  padding: 0.2rem 0.5rem;
+  border-radius: 0.5rem;
+}
