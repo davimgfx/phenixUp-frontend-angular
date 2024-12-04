@@ -5,6 +5,8 @@ type ButtonWidth = "full" | "auto";
 
 type ButtonVariant = 'container' | 'outline' | 'text';
 
+type ButtonType = "button" | "submit" | "reset";
+
 @Component({
   selector: 'app-button',
   standalone: true,
@@ -18,4 +20,5 @@ export class ButtonComponent {
   @Input() label: string = 'Button'; 
   @Input() variant: ButtonVariant = 'container';
   @Input() width: ButtonWidth = 'auto';
+  @Input() type: ButtonType = 'button'; 
 }

@@ -1,38 +1,96 @@
-<form action="" class="form">
+<form action="" class="form" [formGroup]="form" (ngSubmit)="onSubmit()">
+  <!-- #1 -->
+  <div *ngIf="currentStep === 1" class="form-div">
     <h2 class="form-title text-2xl">Login to your account</h2>
     <div class="form-input-div">
       <label for="">E-mail</label>
-      <app-input></app-input>
+      <app-input formControlName="email"></app-input>
     </div>
-    <app-input-otp></app-input-otp>
-    <app-button class="button" width="full" variant="container">Next pass  <svg
-      width="16"
-      height="12"
-      viewBox="0 0 16 12"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg">
-      <path
-        d="M14.5 6L1.5 6M14.5 6L9.66279 1.5M14.5 6L9.66279 10.5"
-        stroke="white"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"></path>
-    </svg></app-button>
-    <app-button width="full" variant="outline"> 
-      <svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg" >
+
+    <app-button
+      class="button"
+      width="full"
+      variant="container"
+      (click)="nextStep()"
+      type="button"
+      >Next pass
+      <svg
+        width="16"
+        height="12"
+        viewBox="0 0 16 12"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M14.5 6L1.5 6M14.5 6L9.66279 1.5M14.5 6L9.66279 10.5"
+          stroke="white"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"></path></svg
+    ></app-button>
+    <app-button width="full" variant="outline">
+      <svg
+        width="21"
+        height="20"
+        viewBox="0 0 21 20"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg">
         <g clip-path="url(#clip0_103_1972)">
-        <path d="M20.305 10.2304C20.305 9.55059 20.2499 8.86714 20.1323 8.19839H10.7V12.0492H16.1014C15.8773 13.2912 15.1571 14.3898 14.1025 15.088V17.5866H17.325C19.2173 15.8449 20.305 13.2728 20.305 10.2304Z" fill="#4285F4"/>
-        <path d="M10.6999 20.0007C13.397 20.0007 15.6714 19.1151 17.3286 17.5866L14.1061 15.0879C13.2096 15.6979 12.0521 16.0433 10.7036 16.0433C8.09474 16.0433 5.88272 14.2832 5.08904 11.9169H1.76367V14.4927C3.46127 17.8695 6.91892 20.0007 10.6999 20.0007Z" fill="#34A853"/>
-        <path d="M5.0854 11.9169C4.66651 10.675 4.66651 9.33014 5.0854 8.08818V5.51239H1.7637C0.345367 8.33804 0.345367 11.6671 1.7637 14.4927L5.0854 11.9169Z" fill="#FBBC04"/>
-        <path d="M10.6999 3.95805C12.1256 3.936 13.5035 4.47247 14.536 5.45722L17.3911 2.60218C15.5833 0.904587 13.1838 -0.0287217 10.6999 0.000673888C6.91892 0.000673888 3.46126 2.13185 1.76367 5.51234L5.08537 8.08813C5.87537 5.71811 8.09106 3.95805 10.6999 3.95805Z" fill="#EA4335"/>
+          <path
+            d="M20.305 10.2304C20.305 9.55059 20.2499 8.86714 20.1323 8.19839H10.7V12.0492H16.1014C15.8773 13.2912 15.1571 14.3898 14.1025 15.088V17.5866H17.325C19.2173 15.8449 20.305 13.2728 20.305 10.2304Z"
+            fill="#4285F4" />
+          <path
+            d="M10.6999 20.0007C13.397 20.0007 15.6714 19.1151 17.3286 17.5866L14.1061 15.0879C13.2096 15.6979 12.0521 16.0433 10.7036 16.0433C8.09474 16.0433 5.88272 14.2832 5.08904 11.9169H1.76367V14.4927C3.46127 17.8695 6.91892 20.0007 10.6999 20.0007Z"
+            fill="#34A853" />
+          <path
+            d="M5.0854 11.9169C4.66651 10.675 4.66651 9.33014 5.0854 8.08818V5.51239H1.7637C0.345367 8.33804 0.345367 11.6671 1.7637 14.4927L5.0854 11.9169Z"
+            fill="#FBBC04" />
+          <path
+            d="M10.6999 3.95805C12.1256 3.936 13.5035 4.47247 14.536 5.45722L17.3911 2.60218C15.5833 0.904587 13.1838 -0.0287217 10.6999 0.000673888C6.91892 0.000673888 3.46126 2.13185 1.76367 5.51234L5.08537 8.08813C5.87537 5.71811 8.09106 3.95805 10.6999 3.95805Z"
+            fill="#EA4335" />
         </g>
         <defs>
-        <clipPath id="clip0_103_1972">
-        <rect width="20" height="20" fill="white" transform="translate(0.5)"/>
-        </clipPath>
+          <clipPath id="clip0_103_1972">
+            <rect
+              width="20"
+              height="20"
+              fill="white"
+              transform="translate(0.5)" />
+          </clipPath>
         </defs>
-        </svg>
-        Continue with Google</app-button>
-  
-    <span>Don't have an account? <a routerLink="/register" class="text-link">Register now</a></span>
-  </form>
+      </svg>
+      Continue with Google</app-button
+    >
+
+    <span
+      >Don't have an account?
+      <a routerLink="/register" class="text-link">Register now</a></span
+    >
+  </div>
+  <!-- END -->
+
+  <!-- #2 -->
+  <div *ngIf="currentStep === 2" class="form-div">
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg" (click)="previousStep()" class="cursor-pointer">
+      <path
+        fill-rule="evenodd"
+        clip-rule="evenodd"
+        d="M10.7071 4.29289C11.0976 4.68342 11.0976 5.31658 10.7071 5.70711L5.41421 11H21C21.5523 11 22 11.4477 22 12C22 12.5523 21.5523 13 21 13H5.41421L10.7071 18.2929C11.0976 18.6834 11.0976 19.3166 10.7071 19.7071C10.3166 20.0976 9.68342 20.0976 9.29289 19.7071L2.29289 12.7071C1.90237 12.3166 1.90237 11.6834 2.29289 11.2929L9.29289 4.29289C9.68342 3.90237 10.3166 3.90237 10.7071 4.29289Z"
+        fill="black" />
+    </svg>
+
+    <h2 class="form-title text-2xl">Verify the code</h2>
+    <h4>Your code was send to you via email</h4>
+    <!-- <app-input-otp  formControlName="token"></app-input-otp> -->
+    <app-input formControlName="token"></app-input>
+    <span>Don´t recive the code? Send again</span>
+    <app-button width="full" width="full" variant="container" type="submit">
+      Confirm code</app-button
+    >
+  </div>
+  <!-- END -->
+</form>
