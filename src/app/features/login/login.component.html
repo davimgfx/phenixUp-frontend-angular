@@ -1,4 +1,5 @@
-<section >
+<section>
+  <!-- <app-navbar></app-navbar>
   <main class="main">
     <app-form-login></app-form-login>
   </main>
@@ -10,7 +11,16 @@
         <stop offset="1" stop-color="#4BADF9"/>
       </linearGradient>
     </defs>
-  </svg>
-   
-      
+  </svg> -->
+
+  <div *ngIf="isLoggedIn">
+    <span>{{ userProfile.name }}</span>
+    <span>{{ userProfile.email }}</span>
+    <span (click)="logoutWithGoogle()">Logout</span>
+  </div>
+
+  <div *ngIf="!isLoggedIn">
+    <span>Não Logado</span>
+    <button (click)="signInWithGoogle()" type="button">Sign in with Google</button>
+  </div>
 </section>

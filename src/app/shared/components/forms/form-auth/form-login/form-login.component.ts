@@ -2,17 +2,21 @@ import { Component, inject } from '@angular/core';
 import { ButtonComponent } from '../../../button/button.component';
 import { InputOTPComponent } from '../../../inputs/input-otp/input-otp.component';
 import { InputComponent } from '../../../inputs/input/input.component';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { NonNullableFormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+
+interface IUser {
+  email: string;
+  token: string;
+}
 
 @Component({
   selector: 'app-form-login',
   standalone: true,
   imports: [
     ButtonComponent,
-    InputOTPComponent,
     InputComponent,
     RouterLink,
     CommonModule,
@@ -22,15 +26,16 @@ import { HttpClient } from '@angular/common/http';
   styleUrl: '../form-auth.component.css',
 })
 export class FormLoginComponent {
-  currentStep: number = 1;
+  router = inject(Router);
   fb = inject(NonNullableFormBuilder);
+  http = inject(HttpClient);
+
+  currentStep: number = 1;
 
   form = this.fb.group({
     email: this.fb.control(''),
     token: this.fb.control(''),
   });
-
-  http = inject(HttpClient);
 
   nextStep(): void {
     if (this.currentStep < 2) {
@@ -45,16 +50,33 @@ export class FormLoginComponent {
     }
   }
 
-  onSubmit(): void {
+  sendAgainToken(): void {
+    this.createTokenByEmail();
   }
 
-  ngOnInit(): void {}
+  onSubmit(): void {
+    this.http
+      .post<IUser>('http://localhost:8080/auth/login', {
+        email: this.form.value.email,
+        token: this.form.value.token,
+      })
+      .subscribe((user) => {
+        document.cookie = `email=${user.email}; path=/;`;
+        document.cookie = `token=${user.token}; path=/;`;
+
+        localStorage.setItem('email', user?.email);
+        localStorage.setItem('token', user?.token);
+        console.log(user);
+
+        this.router.navigate(['/kanban']);
+      });
+  }
 
   createTokenByEmail(): void {
     this.http
-    .post('http://localhost:8080/auth/login/token', {
-      "email": this.form.value.email
-    })
-    .subscribe((user) => console.log(user));
+      .post('http://localhost:8080/auth/login/token', {
+        email: this.form.value.email,
+      })
+      .subscribe((user) => console.log(user));
   }
 }

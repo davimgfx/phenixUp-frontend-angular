@@ -75,7 +75,9 @@
       height="24"
       viewBox="0 0 24 24"
       fill="none"
-      xmlns="http://www.w3.org/2000/svg" (click)="previousStep()" class="cursor-pointer">
+      xmlns="http://www.w3.org/2000/svg"
+      (click)="previousStep()"
+      class="cursor-pointer">
       <path
         fill-rule="evenodd"
         clip-rule="evenodd"
@@ -85,10 +87,14 @@
 
     <h2 class="form-title text-2xl">Verify the code</h2>
     <h4>Your code was send to you via email</h4>
-    <!-- <app-input-otp  formControlName="token"></app-input-otp> -->
     <app-input formControlName="token"></app-input>
-    <span>Don´t recive the code? Send again</span>
-    <app-button width="full" width="full" variant="container" type="submit">
+    <span>Don´t recive the code? <span (click)="sendAgainToken()" class="text-link cursor-pointer">Send again</span></span>
+    <app-button
+      width="full"
+      width="full"
+      variant="container"
+      type="submit"
+      (click)="onSubmit()">
       Confirm code</app-button
     >
   </div>
