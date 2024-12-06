@@ -27,7 +27,7 @@
           stroke-linecap="round"
           stroke-linejoin="round"></path></svg
     ></app-button>
-    <app-button width="full" variant="outline">
+    <app-button width="full" variant="outline" (click)="signInWithGoogle()">
       <svg
         width="21"
         height="20"
@@ -88,7 +88,12 @@
     <h2 class="form-title text-2xl">Verify the code</h2>
     <h4>Your code was send to you via email</h4>
     <app-input formControlName="token"></app-input>
-    <span>Don´t recive the code? <span (click)="sendAgainToken()" class="text-link cursor-pointer">Send again</span></span>
+    <span
+      >Don´t recive the code?
+      <span (click)="sendAgainToken()" class="text-link cursor-pointer"
+        >Send again</span
+      ></span
+    >
     <app-button
       width="full"
       width="full"

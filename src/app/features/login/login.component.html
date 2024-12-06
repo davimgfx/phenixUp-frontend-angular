@@ -1,26 +1,27 @@
 <section>
-  <!-- <app-navbar></app-navbar>
+  <app-navbar></app-navbar>
   <main class="main">
     <app-form-login></app-form-login>
   </main>
-  <svg class="svg"  viewBox="0 0 1440 339" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M1097.58 0.200104C1234.94 5.8793 1269.33 162.94 1406.68 168.684C1419.68 169.228 1440 168.684 1440 168.684V439L0 439C0 439 95.5757 279.163 192.494 218.674C369.108 108.444 526.317 279.032 725.553 218.674C886.794 169.827 929.254 -6.75995 1097.58 0.200104Z" fill="url(#paint0_linear_24_35)"/>
+  <svg
+    class="svg"
+    viewBox="0 0 1440 339"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg">
+    <path
+      d="M1097.58 0.200104C1234.94 5.8793 1269.33 162.94 1406.68 168.684C1419.68 169.228 1440 168.684 1440 168.684V439L0 439C0 439 95.5757 279.163 192.494 218.674C369.108 108.444 526.317 279.032 725.553 218.674C886.794 169.827 929.254 -6.75995 1097.58 0.200104Z"
+      fill="url(#paint0_linear_24_35)" />
     <defs>
-      <linearGradient id="paint0_linear_24_35" x1="1440" y1="439" x2="1195.09" y2="-364.338" gradientUnits="userSpaceOnUse">
-        <stop stop-color=" #EE0BE8"/>
-        <stop offset="1" stop-color="#4BADF9"/>
+      <linearGradient
+        id="paint0_linear_24_35"
+        x1="1440"
+        y1="439"
+        x2="1195.09"
+        y2="-364.338"
+        gradientUnits="userSpaceOnUse">
+        <stop stop-color=" #EE0BE8" />
+        <stop offset="1" stop-color="#4BADF9" />
       </linearGradient>
     </defs>
-  </svg> -->
-
-  <div *ngIf="isLoggedIn">
-    <span>{{ userProfile.name }}</span>
-    <span>{{ userProfile.email }}</span>
-    <span (click)="logoutWithGoogle()">Logout</span>
-  </div>
-
-  <div *ngIf="!isLoggedIn">
-    <span>Não Logado</span>
-    <button (click)="signInWithGoogle()" type="button">Sign in with Google</button>
-  </div>
+  </svg>
 </section>

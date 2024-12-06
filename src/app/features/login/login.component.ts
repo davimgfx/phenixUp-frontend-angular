@@ -13,27 +13,4 @@ import { CommonModule } from '@angular/common';
   styleUrl: './login.component.css',
 })
 export class LoginComponent {
-  private authService = inject(AuthGoogleService);
-
-  userProfile: any;
-
-  signInWithGoogle() {
-    this.authService.login();
-  }
-
-  ngOnInit() {
-    if (this.authService.identityClaims) {
-      this.authService.userProfile.subscribe((profile) => {
-        this.userProfile = profile;
-      });
-    }
-  }
-
-  get isLoggedIn() {
-    return !!this.authService.identityClaims;
-  }
-
-  logoutWithGoogle() {
-    this.authService.logout();
-  }
 }

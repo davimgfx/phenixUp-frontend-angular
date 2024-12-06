@@ -1,1 +1,6 @@
-<p>kanban works!</p>
+<div *ngIf="isLoggedIn">
+  <p>kanban works!</p>
+  <span>{{ userProfile.name }}</span>
+  <span>{{ userProfile.email }}</span>
+  <span (click)="logoutWithGoogle()">Logout</span>
+</div>

@@ -19,6 +19,17 @@
   gap: 1rem;
 }
 
+.form-div .change-name {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  cursor: pointer;
+}
+
+.change-name:hover svg path {
+  fill: var(--text_link_hover);
+}
+
 .form .form-input {
   border: 2px solid var(--gray);
   padding: 0.2rem 0.5rem;

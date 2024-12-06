@@ -6,6 +6,7 @@ import { Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { NonNullableFormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { AuthGoogleService } from '../../../../../services/auth-google/auth-google.service';
 
 interface IUser {
   email: string;
@@ -29,6 +30,7 @@ export class FormLoginComponent {
   router = inject(Router);
   fb = inject(NonNullableFormBuilder);
   http = inject(HttpClient);
+  authService = inject(AuthGoogleService);
 
   currentStep: number = 1;
 
@@ -78,5 +80,22 @@ export class FormLoginComponent {
         email: this.form.value.email,
       })
       .subscribe((user) => console.log(user));
+  }
+
+  userProfile: any;
+
+  signInWithGoogle() {
+    this.authService.login();
+  }
+
+  ngOnInit() {
+    if (this.authService.identityClaims) {
+      this.authService.userProfile.subscribe((profile) => {
+        this.authService.saveToLocalStorage(profile);
+        console.log(profile);
+        this.userProfile = profile;
+        this.router.navigate(['/kanban']);
+      });
+    }
   }
 }

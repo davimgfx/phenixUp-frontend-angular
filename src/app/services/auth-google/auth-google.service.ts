@@ -43,20 +43,31 @@ export class AuthGoogleService {
 
   get identityClaims() {
     return this.oAuthService.getIdentityClaims();
-  }	
+  }
 
   get accessToken() {
     return this.oAuthService.getAccessToken();
   }
 
   get userProfile() {
-    const url = "https://www.googleapis.com/oauth2/v2/userinfo";
+    const url = 'https://www.googleapis.com/oauth2/v2/userinfo';
 
     return this.http.get(url, {
       headers: {
         Authorization: `Bearer ${this.accessToken}`,
       },
-    })
+    });
+  }
 
+  saveToLocalStorage(profile: any) {
+    const tokenValidate = new Date();
+    tokenValidate.setDate(tokenValidate.getDate() + 1); // Data de expiração: dia seguinte
+    const dataToSave = {
+      name: profile.name,
+      email: profile.email,
+      picture: profile.picture,
+      token_validate: tokenValidate.toISOString(),
+    };
+    localStorage.setItem('userProfile', JSON.stringify(dataToSave));
   }
 }

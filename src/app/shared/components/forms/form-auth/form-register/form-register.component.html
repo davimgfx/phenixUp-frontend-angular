@@ -1,36 +1,94 @@
-<form action="" class="form">
+<form action="" class="form" [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div *ngIf="currentStep === 1" class="form-div">
     <h2 class="form-title text-2xl">Create an account</h2>
     <div class="form-input-div">
       <label for="">Name</label>
-      <app-input></app-input>
+      <app-input formControlName="name"></app-input>
     </div>
-    <app-button class="button" width="full" variant="container">Next pass  <svg
-      width="16"
-      height="12"
-      viewBox="0 0 16 12"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg">
-      <path
-        d="M14.5 6L1.5 6M14.5 6L9.66279 1.5M14.5 6L9.66279 10.5"
-        stroke="white"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"></path>
-    </svg></app-button>
-    <app-button width="full" variant="outline"> <svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <app-button
+      class="button"
+      width="full"
+      variant="container"
+      (click)="nextStep()"
+      >Next pass
+      <svg
+        width="16"
+        height="12"
+        viewBox="0 0 16 12"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M14.5 6L1.5 6M14.5 6L9.66279 1.5M14.5 6L9.66279 10.5"
+          stroke="white"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"></path></svg
+    ></app-button>
+    <app-button width="full" variant="outline" (click)="signInWithGoogle()">
+      <svg
+        width="21"
+        height="20"
+        viewBox="0 0 21 20"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg">
         <g clip-path="url(#clip0_103_1972)">
-        <path d="M20.305 10.2304C20.305 9.55059 20.2499 8.86714 20.1323 8.19839H10.7V12.0492H16.1014C15.8773 13.2912 15.1571 14.3898 14.1025 15.088V17.5866H17.325C19.2173 15.8449 20.305 13.2728 20.305 10.2304Z" fill="#4285F4"/>
-        <path d="M10.6999 20.0007C13.397 20.0007 15.6714 19.1151 17.3286 17.5866L14.1061 15.0879C13.2096 15.6979 12.0521 16.0433 10.7036 16.0433C8.09474 16.0433 5.88272 14.2832 5.08904 11.9169H1.76367V14.4927C3.46127 17.8695 6.91892 20.0007 10.6999 20.0007Z" fill="#34A853"/>
-        <path d="M5.0854 11.9169C4.66651 10.675 4.66651 9.33014 5.0854 8.08818V5.51239H1.7637C0.345367 8.33804 0.345367 11.6671 1.7637 14.4927L5.0854 11.9169Z" fill="#FBBC04"/>
-        <path d="M10.6999 3.95805C12.1256 3.936 13.5035 4.47247 14.536 5.45722L17.3911 2.60218C15.5833 0.904587 13.1838 -0.0287217 10.6999 0.000673888C6.91892 0.000673888 3.46126 2.13185 1.76367 5.51234L5.08537 8.08813C5.87537 5.71811 8.09106 3.95805 10.6999 3.95805Z" fill="#EA4335"/>
+          <path
+            d="M20.305 10.2304C20.305 9.55059 20.2499 8.86714 20.1323 8.19839H10.7V12.0492H16.1014C15.8773 13.2912 15.1571 14.3898 14.1025 15.088V17.5866H17.325C19.2173 15.8449 20.305 13.2728 20.305 10.2304Z"
+            fill="#4285F4" />
+          <path
+            d="M10.6999 20.0007C13.397 20.0007 15.6714 19.1151 17.3286 17.5866L14.1061 15.0879C13.2096 15.6979 12.0521 16.0433 10.7036 16.0433C8.09474 16.0433 5.88272 14.2832 5.08904 11.9169H1.76367V14.4927C3.46127 17.8695 6.91892 20.0007 10.6999 20.0007Z"
+            fill="#34A853" />
+          <path
+            d="M5.0854 11.9169C4.66651 10.675 4.66651 9.33014 5.0854 8.08818V5.51239H1.7637C0.345367 8.33804 0.345367 11.6671 1.7637 14.4927L5.0854 11.9169Z"
+            fill="#FBBC04" />
+          <path
+            d="M10.6999 3.95805C12.1256 3.936 13.5035 4.47247 14.536 5.45722L17.3911 2.60218C15.5833 0.904587 13.1838 -0.0287217 10.6999 0.000673888C6.91892 0.000673888 3.46126 2.13185 1.76367 5.51234L5.08537 8.08813C5.87537 5.71811 8.09106 3.95805 10.6999 3.95805Z"
+            fill="#EA4335" />
         </g>
         <defs>
-        <clipPath id="clip0_103_1972">
-        <rect width="20" height="20" fill="white" transform="translate(0.5)"/>
-        </clipPath>
+          <clipPath id="clip0_103_1972">
+            <rect
+              width="20"
+              height="20"
+              fill="white"
+              transform="translate(0.5)" />
+          </clipPath>
         </defs>
-        </svg>
-        Continue with Google</app-button>
-  
-    <span>Already have an account? <a routerLink="/login" class="text-link">Login now</a></span>
-  </form>
+      </svg>
+      Continue with Google</app-button
+    >
+    <span
+      >Already have an account?
+      <a routerLink="/login" class="text-link">Login now</a></span
+    >
+  </div>
+
+  <div *ngIf="currentStep === 2" class="form-div">
+    <h2 class="form-title text-2xl">Last step to create a new account :)</h2>
+
+    <div class="form-input-div">
+      <label for="">Email</label>
+      <app-input formControlName="email"></app-input>
+    </div>
+    <span (click)="previousStep()" class="text-sm change-name text-link">
+      <svg
+        width="16"
+        height="16"
+        viewBox="0 0 16 16"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg">
+        <path
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+          d="M7.13799 2.86192C7.39834 3.12227 7.39834 3.54438 7.13799 3.80473L3.60939 7.33332H13.9999C14.3681 7.33332 14.6666 7.6318 14.6666 7.99999C14.6666 8.36818 14.3681 8.66666 13.9999 8.66666H3.60939L7.13799 12.1953C7.39834 12.4556 7.39834 12.8777 7.13799 13.1381C6.87764 13.3984 6.45553 13.3984 6.19518 13.1381L1.52851 8.47139C1.26816 8.21104 1.26816 7.78893 1.52851 7.52858L6.19518 2.86192C6.45553 2.60157 6.87764 2.60157 7.13799 2.86192Z"
+          fill="#4F46E4" />
+      </svg>
+
+      <span>Change the name</span></span
+    >
+
+    <app-button width="full" width="full" variant="container" type="submit">
+      Create account</app-button
+    >
+  </div>
+</form>
