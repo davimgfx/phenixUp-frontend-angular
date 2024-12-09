@@ -6,7 +6,7 @@ import { Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { NonNullableFormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-import { AuthGoogleService } from '../../../../../services/auth-google/auth-google.service';
+import { AuthGoogleService } from '../../../../../core/services/auth-google/auth-google.service';
 
 interface IUser {
   email: string;

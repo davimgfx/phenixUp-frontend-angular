@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { jwtDecode } from 'jwt-decode';
-import { AuthGoogleService } from '../../services/auth-google/auth-google.service';
+import { AuthGoogleService } from '../../core/services/auth-google/auth-google.service';
 import { CommonModule } from '@angular/common';
 
 @Component({

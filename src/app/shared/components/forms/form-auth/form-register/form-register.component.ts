@@ -4,12 +4,13 @@ import { InputComponent } from '../../../inputs/input/input.component';
 import { Router, RouterLink } from '@angular/router';
 import { NonNullableFormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-import { AuthGoogleService } from '../../../../../services/auth-google/auth-google.service';
+import { AuthGoogleService } from '../../../../../core/services/auth-google/auth-google.service';
 import { CommonModule } from '@angular/common';
 
 interface IUser {
   name: string;
   email: string;
+  token: string;
 }
 
 @Component({
@@ -58,6 +59,14 @@ export class FormRegisterComponent {
       })
       .subscribe((user) => {
         console.log(user);
+        document.cookie = `name=${user.name}; path=/;`;
+        document.cookie = `email=${user.email}; path=/;`;
+        document.cookie = `token=${user.token}; path=/;`;
+
+        localStorage.setItem('name', user?.name);
+        localStorage.setItem('email', user?.email);
+        localStorage.setItem('token', user?.token);
+
         this.form.value.name = '';
         this.form.value.email = '';
         this.router.navigate(['/kanban']);
