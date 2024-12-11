@@ -1,6 +1,24 @@
-<div *ngIf="isLoggedIn">
+<!-- <div *ngIf="isLoggedIn"> -->
+<div>
   <p>kanban works!</p>
-  <span>{{ userProfile.name }}</span>
-  <span>{{ userProfile.email }}</span>
-  <span (click)="logoutWithGoogle()">Logout</span>
+  <!-- <span>{{ userProfile.name }}</span>
+  <span>{{ userProfile.email }}</span> -->
+  <!-- <span (click)="logoutWithGoogle()">Logout</span> -->
+  <div *ngIf="loading">Loading...</div>
+  <div *ngIf="!loading">
+    <ul>
+      <li *ngFor="let project of projects">
+        <h3>{{ project.id }}</h3>
+        <p>{{ project.name }}</p>
+        <p>{{ project.description }}</p>
+        <p>{{ project.owner_id }}</p>
+        <p>{{ project.code }}</p>
+        <p>{{ project.picture }}</p>
+        <p>{{ project.createdAt }}</p>
+        <p>{{ project.updatedAt }}</p>
+      </li>
+    </ul>
+  </div>
+  <span (click)="logout()">Logout</span>
 </div>
+<!-- </div> -->

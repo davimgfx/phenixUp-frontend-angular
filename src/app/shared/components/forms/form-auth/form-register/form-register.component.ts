@@ -6,6 +6,7 @@ import { NonNullableFormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { AuthGoogleService } from '../../../../../core/services/auth-google/auth-google.service';
 import { CommonModule } from '@angular/common';
+import { TokenService } from '../../../../../core/services/token/token.service';
 
 interface IUser {
   name: string;
@@ -31,6 +32,7 @@ export class FormRegisterComponent {
   fb = inject(NonNullableFormBuilder);
   http = inject(HttpClient);
   authService = inject(AuthGoogleService);
+  tokenService = inject(TokenService);
 
   currentStep: number = 1;
 
@@ -58,14 +60,7 @@ export class FormRegisterComponent {
         email: this.form.value.email,
       })
       .subscribe((user) => {
-        console.log(user);
-        document.cookie = `name=${user.name}; path=/;`;
-        document.cookie = `email=${user.email}; path=/;`;
-        document.cookie = `token=${user.token}; path=/;`;
-
-        localStorage.setItem('name', user?.name);
-        localStorage.setItem('email', user?.email);
-        localStorage.setItem('token', user?.token);
+        this.tokenService.setToken(user.token);
 
         this.form.value.name = '';
         this.form.value.email = '';

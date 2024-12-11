@@ -7,6 +7,7 @@ import { CommonModule } from '@angular/common';
 import { NonNullableFormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { AuthGoogleService } from '../../../../../core/services/auth-google/auth-google.service';
+import { TokenService } from '../../../../../core/services/token/token.service';
 
 interface IUser {
   email: string;
@@ -31,6 +32,7 @@ export class FormLoginComponent {
   fb = inject(NonNullableFormBuilder);
   http = inject(HttpClient);
   authService = inject(AuthGoogleService);
+  tokenService = inject(TokenService);
 
   currentStep: number = 1;
 
@@ -63,11 +65,7 @@ export class FormLoginComponent {
         token: this.form.value.token,
       })
       .subscribe((user) => {
-        document.cookie = `email=${user.email}; path=/;`;
-        document.cookie = `token=${user.token}; path=/;`;
-
-        localStorage.setItem('email', user?.email);
-        localStorage.setItem('token', user?.token);
+        this.tokenService.setToken(user.token);
         console.log(user);
 
         this.router.navigate(['/kanban']);
