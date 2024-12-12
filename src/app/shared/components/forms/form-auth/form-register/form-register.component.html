@@ -2,8 +2,8 @@
   <div *ngIf="currentStep === 1" class="form-div">
     <h2 class="form-title text-2xl">Create an account</h2>
     <div class="form-input-div">
-      <label for="">Name</label>
-      <app-input formControlName="name"></app-input>
+      <label for="name">Name</label>
+      <app-input formControlName="name" type="text"></app-input>
     </div>
     <app-button
       class="button"
@@ -67,8 +67,8 @@
     <h2 class="form-title text-2xl">Last step to create a new account :)</h2>
 
     <div class="form-input-div">
-      <label for="">Email</label>
-      <app-input formControlName="email"></app-input>
+      <label for="email">Email</label>
+      <app-input formControlName="email" type="email"></app-input>
     </div>
     <span (click)="previousStep()" class="text-sm change-name text-link">
       <svg

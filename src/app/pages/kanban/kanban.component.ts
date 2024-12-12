@@ -74,7 +74,7 @@ export class KanbanComponent {
     }
 
     if (token) {
-      this.kanbanService.getAllProjects(token).subscribe(
+      this.kanbanService.getAllProjects(token, this.tokenService.decodeToken().id).subscribe(
         (data) => {
           this.projects = data; // Atribui os dados dos projetos
           this.loading = false; // Desativa o estado de carregamento quando os dados forem carregados

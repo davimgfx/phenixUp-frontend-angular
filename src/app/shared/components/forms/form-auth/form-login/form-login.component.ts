@@ -4,7 +4,11 @@ import { InputOTPComponent } from '../../../inputs/input-otp/input-otp.component
 import { InputComponent } from '../../../inputs/input/input.component';
 import { Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { NonNullableFormBuilder, ReactiveFormsModule } from '@angular/forms';
+import {
+  NonNullableFormBuilder,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { AuthGoogleService } from '../../../../../core/services/auth-google/auth-google.service';
 import { TokenService } from '../../../../../core/services/token/token.service';
@@ -37,8 +41,14 @@ export class FormLoginComponent {
   currentStep: number = 1;
 
   form = this.fb.group({
-    email: this.fb.control(''),
-    token: this.fb.control(''),
+    email: this.fb.control('', { validators: [Validators.required] }),
+    token: this.fb.control('', {
+      validators: [
+        Validators.required,
+        Validators.minLength(6),
+        Validators.maxLength(6),
+      ],
+    }),
   });
 
   nextStep(): void {

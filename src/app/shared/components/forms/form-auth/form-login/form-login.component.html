@@ -3,8 +3,8 @@
   <div *ngIf="currentStep === 1" class="form-div">
     <h2 class="form-title text-2xl">Login to your account</h2>
     <div class="form-input-div">
-      <label for="">E-mail</label>
-      <app-input formControlName="email"></app-input>
+      <label for="email">E-mail</label>
+      <app-input formControlName="email" type="email"></app-input>
     </div>
 
     <app-button
@@ -87,7 +87,7 @@
 
     <h2 class="form-title text-2xl">Verify the code</h2>
     <h4>Your code was send to you via email</h4>
-    <app-input formControlName="token"></app-input>
+    <app-input formControlName="token" type="text"></app-input>
     <span
       >Don´t recive the code?
       <span (click)="sendAgainToken()" class="text-link cursor-pointer"

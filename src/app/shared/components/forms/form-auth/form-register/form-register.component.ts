@@ -2,7 +2,11 @@ import { Component, inject } from '@angular/core';
 import { ButtonComponent } from '../../../button/button.component';
 import { InputComponent } from '../../../inputs/input/input.component';
 import { Router, RouterLink } from '@angular/router';
-import { NonNullableFormBuilder, ReactiveFormsModule } from '@angular/forms';
+import {
+  NonNullableFormBuilder,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { AuthGoogleService } from '../../../../../core/services/auth-google/auth-google.service';
 import { CommonModule } from '@angular/common';
@@ -37,8 +41,8 @@ export class FormRegisterComponent {
   currentStep: number = 1;
 
   form = this.fb.group({
-    name: this.fb.control(''),
-    email: this.fb.control(''),
+    name: this.fb.control('', { validators: [Validators.required] }),
+    email: this.fb.control('', { validators: [Validators.required] }),
   });
 
   nextStep(): void {
