@@ -5,8 +5,7 @@ import { jwtDecode } from 'jwt-decode';
   providedIn: 'root',
 })
 export class TokenService {
-  constructor() {}
-
+  
   getToken(): string | null {
     return localStorage.getItem('token'); // Pega o token do localStorage
   }

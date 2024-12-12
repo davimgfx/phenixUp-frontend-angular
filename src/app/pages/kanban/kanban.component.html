@@ -5,6 +5,7 @@
   <span>{{ userProfile.email }}</span> -->
   <!-- <span (click)="logoutWithGoogle()">Logout</span> -->
   <div *ngIf="loading">Loading...</div>
+  <div *ngIf="errorToken">Houve um erro pois não existe token</div>
   <div *ngIf="!loading">
     <ul>
       <li *ngFor="let project of projects">

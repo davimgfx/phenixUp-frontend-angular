@@ -19,11 +19,11 @@ export class KanbanComponent {
   private tokenService = inject(TokenService);
   // userProfile: any;
   loading: boolean = true;
+  errorToken: boolean = false;
   projects: IProject[] = [];
   // decodedToken: string | null = null;
 
   decodedToken: any;
-
 
   ngOnInit(): void {
     this.loadProjects();
@@ -66,16 +66,25 @@ export class KanbanComponent {
   // }
 
   loadProjects(): void {
-    this.kanbanService.getAllProjects().subscribe(
-      (data) => {
-        this.projects = data; // Atribui os dados dos projetos
-        this.loading = false; // Desativa o estado de carregamento quando os dados forem carregados
-      },
-      (error) => {
-        console.error('Erro ao carregar os projetos:', error);
-        this.loading = false; // Desativa o estado de carregamento mesmo em caso de erro
-      }
-    );
+    const token = this.tokenService.getToken();
+
+    if (token === null) {
+      this.loading = false;
+      this.errorToken = true;
+    }
+
+    if (token) {
+      this.kanbanService.getAllProjects(token).subscribe(
+        (data) => {
+          this.projects = data; // Atribui os dados dos projetos
+          this.loading = false; // Desativa o estado de carregamento quando os dados forem carregados
+        },
+        (error) => {
+          console.error('Erro ao carregar os projetos:', error);
+          this.loading = false; // Desativa o estado de carregamento mesmo em caso de erro
+        }
+      );
+    }
   }
 
   logout(): void {
