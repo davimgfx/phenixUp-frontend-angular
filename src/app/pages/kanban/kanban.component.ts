@@ -1,7 +1,6 @@
 import { Component, inject } from '@angular/core';
-import { jwtDecode } from 'jwt-decode';
-import { AuthGoogleService } from '../../core/services/auth-google/auth-google.service';
 import { CommonModule } from '@angular/common';
+import { SidebarComponent } from '../../shared/components/sidebar/sidebar.component';
 import { KanbanService } from '../../core/services/kanban/kanban.service';
 import { IProject } from '../../core/models/ProjectModels';
 import { TokenService } from '../../core/services/token/token.service';
@@ -9,7 +8,7 @@ import { TokenService } from '../../core/services/token/token.service';
 @Component({
   selector: 'app-kanban',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, SidebarComponent],
   templateUrl: './kanban.component.html',
   styleUrl: './kanban.component.css',
 })

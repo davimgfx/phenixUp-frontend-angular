@@ -4,6 +4,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { KanbanComponent } from './pages/kanban/kanban.component';
 import { kanbanProjectsResolver } from './core/resolvers/kanban-projects/kanban-projects.resolver';
+import { AUTH, KANBAN } from './core/models/constants-routing';
 
 export const routes: Routes = [
   {
@@ -11,15 +12,15 @@ export const routes: Routes = [
     component: HomeComponent,
   },
   {
-    path: 'login',
+    path: AUTH.LOGIN,
     component: LoginComponent,
   },
   {
-    path: 'register',
+    path: AUTH.REGISTER,
     component: RegisterComponent,
   },
   {
-    path: "kanban",
+    path: KANBAN.ROOT,
     component: KanbanComponent,
     resolve: {
       projects: kanbanProjectsResolver,

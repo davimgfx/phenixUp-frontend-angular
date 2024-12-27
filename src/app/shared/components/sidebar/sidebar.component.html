@@ -1,0 +1,39 @@
+<nav class="sidebar">
+  <ul class="sidebar-project-info">
+    <img
+      src="../../../../assets/project_logo.png"
+      alt="logo do projeto"
+      class="sidebar-project-info-image" />
+    <div class="sidebar-project-info-text">
+      <span class="relative sidebar-project-div">
+        <span class="sidebar-project-info-text-name">Nome do projeto </span>
+        <svg
+          width="19"
+          height="11"
+          viewBox="0 0 19 11"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          class="arrow-button"
+          (click)="toggleModal()">
+          <path
+            d="M17.8536 2.79586L10.3536 10.2959C10.2491 10.4007 10.1249 10.484 9.98818 10.5407C9.85144 10.5975 9.70483 10.6267 9.55676 10.6267C9.4087 10.6267 9.26209 10.5975 9.12534 10.5407C8.98859 10.484 8.8644 10.4007 8.75989 10.2959L1.25989 2.79586C1.04854 2.58451 0.92981 2.29787 0.92981 1.99898C0.92981 1.7001 1.04854 1.41345 1.25989 1.20211C1.47123 0.990763 1.75788 0.872031 2.05676 0.872031C2.35565 0.872031 2.64229 0.990763 2.85364 1.20211L9.5577 7.90617L16.2618 1.20117C16.4731 0.989826 16.7597 0.871094 17.0586 0.871094C17.3575 0.871094 17.6442 0.989826 17.8555 1.20117C18.0669 1.41252 18.1856 1.69916 18.1856 1.99805C18.1856 2.29693 18.0669 2.58358 17.8555 2.79492L17.8536 2.79586Z"
+            fill="#1E293B" />
+        </svg>
+
+        <app-project-options-menu
+          *ngIf="isModalOpen"
+          (closeModal)="onModalClose()"></app-project-options-menu>
+      </span>
+
+      <span class="sidebar-project-info-text-name text-xs"
+        >Data de criação</span
+      >
+    </div>
+  </ul>
+  <ul>
+    <span>Dashboard</span>
+  </ul>
+  <ul>
+    <span>Settings</span>
+  </ul>
+</nav>

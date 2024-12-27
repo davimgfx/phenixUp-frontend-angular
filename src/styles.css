@@ -121,3 +121,15 @@ a:active {
 .text-link:hover{
   color: var(--text_link_hover);
 }
+
+.relative{
+  position: relative;
+}
+
+.absolute{
+  position: absolute;
+}
+
+.cursor-pointer{
+  cursor: pointer;
+}
