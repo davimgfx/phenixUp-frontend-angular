@@ -1,0 +1,26 @@
+<div *ngIf="isBrowser">
+  <span>Add/Change a color to the pallet</span>
+  <div>
+    <span>Previous</span>
+  </div>
+  <div>
+    <span>Color #1</span>
+    <div>
+      <input
+        [(colorPicker)]="color1"
+        [style.background]="color1"
+        [cpToggle]="true"
+        [cpDialogDisplay]="'inline'" />
+    </div>
+  </div>
+  <div>
+    <span>Color #2</span>
+    <div>
+      <input
+        [(colorPicker)]="color2"
+        [style.background]="color2"
+        [cpToggle]="true"
+        [cpDialogDisplay]="'inline'" />
+    </div>
+  </div>
+</div>
