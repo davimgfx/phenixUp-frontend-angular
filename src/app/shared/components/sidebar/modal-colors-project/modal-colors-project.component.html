@@ -2,25 +2,37 @@
   <span>Add/Change a color to the pallet</span>
   <div>
     <span>Previous</span>
+    <div class="square"></div>
+    <div class="semi-circles">
+      <div class="semi-circle-color1" [style.background-color]="color1"></div>
+      <div class="semi-circle-color2" [style.background-color]="color2"></div>
+    </div>
   </div>
-  <div>
-    <span>Color #1</span>
+  <div class="colors-selectors">
     <div>
-      <input
-        [(colorPicker)]="color1"
+      <span>Color #1</span>
+      <div
+        class="color-box"
         [style.background]="color1"
+        [colorPicker]="color1"
         [cpToggle]="true"
-        [cpDialogDisplay]="'inline'" />
+        [cpOutputFormat]="'hex'"
+        [cpDialogDisplay]="'inline'"
+        [cpDisableInput]="true"
+        (colorPickerChange)="color1 = $event"></div>
     </div>
-  </div>
-  <div>
-    <span>Color #2</span>
     <div>
-      <input
-        [(colorPicker)]="color2"
+      <span>Color #2</span>
+      <div
+        class="color-box"
         [style.background]="color2"
+        [colorPicker]="color2"
         [cpToggle]="true"
-        [cpDialogDisplay]="'inline'" />
+        [cpOutputFormat]="'hex'"
+        [cpDialogDisplay]="'inline'"
+        [cpDisableInput]="true"
+        (colorPickerChange)="color2 = $event"></div>
     </div>
   </div>
+  <button (click)="onSubmitted()">Salvando cores!</button>
 </div>
