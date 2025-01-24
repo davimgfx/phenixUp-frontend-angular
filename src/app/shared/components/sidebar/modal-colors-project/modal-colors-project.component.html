@@ -1,38 +1,53 @@
-<div *ngIf="isBrowser">
-  <span>Add/Change a color to the pallet</span>
-  <div>
-    <span>Previous</span>
-    <div class="square"></div>
-    <div class="semi-circles">
-      <div class="semi-circle-color1" [style.background-color]="color1"></div>
-      <div class="semi-circle-color2" [style.background-color]="color2"></div>
+<div>
+  <div class="modal-position">
+    <div *ngIf="isBrowser" class="modal" #modal>
+      <span>Add/Change a color to the pallet</span>
+      <div class="logo">
+        <span>Previous</span>
+        <div class="square"></div>
+        <div class="semi-circles">
+          <div
+            class="semi-circle-color1"
+            [style.background-color]="color1"></div>
+          <div
+            class="semi-circle-color2"
+            [style.background-color]="color2"></div>
+        </div>
+      </div>
+      <div class="colors-selectors">
+        <div>
+          <span>Color #1</span>
+          <div
+            class="color-box"
+            [style.background]="color1"
+            [colorPicker]="color1"
+            [cpToggle]="true"
+            [cpOutputFormat]="'hex'"
+            [cpDialogDisplay]="'inline'"
+            [cpDisableInput]="true"
+            (colorPickerChange)="color1 = $event"></div>
+        </div>
+        <div>
+          <span>Color #2</span>
+          <div
+            class="color-box"
+            [style.background]="color2"
+            [colorPicker]="color2"
+            [cpToggle]="true"
+            [cpOutputFormat]="'hex'"
+            [cpDialogDisplay]="'inline'"
+            [cpDisableInput]="true"
+            (colorPickerChange)="color2 = $event"></div>
+        </div>
+      </div>
+      <div class="buttons">
+        <app-button variant="outline" (click)="close()">Cancelar</app-button>
+        <app-button (click)="onSubmitted()" variant="normal"
+          >Confirmar</app-button
+        >
+      </div>
     </div>
   </div>
-  <div class="colors-selectors">
-    <div>
-      <span>Color #1</span>
-      <div
-        class="color-box"
-        [style.background]="color1"
-        [colorPicker]="color1"
-        [cpToggle]="true"
-        [cpOutputFormat]="'hex'"
-        [cpDialogDisplay]="'inline'"
-        [cpDisableInput]="true"
-        (colorPickerChange)="color1 = $event"></div>
-    </div>
-    <div>
-      <span>Color #2</span>
-      <div
-        class="color-box"
-        [style.background]="color2"
-        [colorPicker]="color2"
-        [cpToggle]="true"
-        [cpOutputFormat]="'hex'"
-        [cpDialogDisplay]="'inline'"
-        [cpDisableInput]="true"
-        (colorPickerChange)="color2 = $event"></div>
-    </div>
-  </div>
-  <button (click)="onSubmitted()">Salvando cores!</button>
+
+  <div class="background"></div>
 </div>

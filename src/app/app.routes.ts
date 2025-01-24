@@ -21,10 +21,6 @@ export const routes: Routes = [
     component: RegisterComponent,
   },
   {
-    path: 'color',
-    component: ModalColorsProjectComponent,
-  },
-  {
     path: KANBAN.ROOT,
     component: KanbanComponent,
     resolve: {

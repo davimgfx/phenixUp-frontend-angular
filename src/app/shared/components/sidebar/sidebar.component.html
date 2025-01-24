@@ -1,12 +1,21 @@
 <nav class="sidebar">
   <ul class="sidebar-project-info">
-    <img
-      src="../../../../assets/project_logo.png"
-      alt="logo do projeto"
-      class="sidebar-project-info-image" />
+    <div>
+      <div class="square"></div>
+      <div class="semi-circles">
+        <div
+          class="semi-circle-color1"
+          [style.background-color]="this.projectColor1"></div>
+        <div
+          class="semi-circle-color2"
+          [style.background-color]="this.projectColor2"></div>
+      </div>
+    </div>
     <div class="sidebar-project-info-text">
       <span class="relative sidebar-project-div">
-        <span class="sidebar-project-info-text-name">Nome do projeto </span>
+        <span class="sidebar-project-info-text-name">{{
+          this.projectName
+        }}</span>
         <svg
           width="19"
           height="11"
@@ -25,10 +34,13 @@
           (closeModal)="onModalClose()"></app-project-options-menu>
       </span>
 
-      <span class="sidebar-project-info-text-name text-xs"
-        >Data de criação</span
-      >
+      <span class="sidebar-project-info-text-name text-xs">{{
+        this.projectDescription
+      }}</span>
     </div>
+  </ul>
+  <ul>
+    <span>Mudar de projeto</span>
   </ul>
   <ul>
     <span>Dashboard</span>

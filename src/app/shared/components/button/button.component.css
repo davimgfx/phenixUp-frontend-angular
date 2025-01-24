@@ -10,6 +10,17 @@
   gap: 0.5rem;
 }
 
+.normal {
+  background: var(--button_color);
+  color: white;
+  border: 1px;
+  padding: 0.6rem 1.1rem;
+}
+
+.normal:hover {
+  background: var(--button_color_hover);
+}
+
 .container {
   background: linear-gradient(90deg, var(--primary) 0%, var(--second) 100%);
   color: white;
@@ -18,10 +29,15 @@
 }
 
 .container:hover {
-  background: linear-gradient(90deg, var(--primary_hover) 0%, var(--second_hover) 100%);
+  background: linear-gradient(
+    90deg,
+    var(--primary_hover) 0%,
+    var(--second_hover) 100%
+  );
 }
 
 .outline {
+  padding: 0.55rem 1rem;
   background-color: transparent;
   border: 1px solid var(--purple_transparent);
 }

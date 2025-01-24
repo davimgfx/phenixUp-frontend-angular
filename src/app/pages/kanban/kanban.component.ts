@@ -20,6 +20,8 @@ export class KanbanComponent {
   loading: boolean = true;
   errorToken: boolean = false;
   projects: IProject[] = [];
+  color1: string = '#000000';
+  color2: string = '#000000';
   // decodedToken: string | null = null;
 
   decodedToken: any;
@@ -73,16 +75,19 @@ export class KanbanComponent {
     }
 
     if (token) {
-      this.kanbanService.getAllProjects(token, this.tokenService.decodeToken().id).subscribe(
-        (data) => {
-          this.projects = data; // Atribui os dados dos projetos
-          this.loading = false; // Desativa o estado de carregamento quando os dados forem carregados
-        },
-        (error) => {
-          console.error('Erro ao carregar os projetos:', error);
-          this.loading = false; // Desativa o estado de carregamento mesmo em caso de erro
-        }
-      );
+      this.kanbanService
+        .getAllProjects(token, this.tokenService.decodeToken().id)
+        .subscribe(
+          (data) => {
+            this.projects = data; // Atribui os dados dos projetos
+            console.log(data);
+            this.loading = false; // Desativa o estado de carregamento quando os dados forem carregados
+          },
+          (error) => {
+            console.error('Erro ao carregar os projetos:', error);
+            this.loading = false; // Desativa o estado de carregamento mesmo em caso de erro
+          }
+        );
     }
   }
 

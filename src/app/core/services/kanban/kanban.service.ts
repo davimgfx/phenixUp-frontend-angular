@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { IColorsProject, IKanbanProjects } from './types';
 
 @Injectable({
   providedIn: 'root',
@@ -10,13 +11,57 @@ export class KanbanService {
 
   constructor(private http: HttpClient) {}
 
-  getAllProjects(token: string, clientId: String): Observable<any> {
-    // Criando o cabeçalho com o token
+  setSelectProjectInLocalStorage(project: IKanbanProjects): void {
+    localStorage.setItem('project', JSON.stringify(project));
+  }
+
+  getAllProjects(
+    token: string,
+    clientId: String
+  ): Observable<IKanbanProjects[]> {
     const headers = new HttpHeaders({
-      Authorization: `Bearer ${token}`, // Passando o token para o cabeçalho
+      Authorization: `Bearer ${token}`,
     });
 
-    // Passando os cabeçalhos na requisição HTTP
-    return this.http.get<any>(`${this.baseUrl}/${clientId}`, { headers });
+    return this.http.get<IKanbanProjects[]>(`${this.baseUrl}/${clientId}`, {
+      headers,
+    });
+  }
+
+  getProjectColors(token: string, clientId: String) {
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+    });
+
+    return this.http.get<IColorsProject[]>(
+      `${this.baseUrl}/projectColor/${clientId}`,
+      {
+        headers,
+      }
+    );
+  }
+
+  updateProjectColors(
+    token: string,
+    projectId: string,
+    color1: string,
+    color2: string
+  ): Observable<IColorsProject[]> {
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+    });
+
+    const colorsObject = {
+      colorLogo1: color1,
+      colorLogo2: color2,
+    };
+
+    return this.http.put<IColorsProject[]>(
+      `${this.baseUrl}/updateProjectColors/${projectId}`,
+      colorsObject,
+      {
+        headers,
+      }
+    );
   }
 }

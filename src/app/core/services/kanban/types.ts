@@ -1,4 +1,4 @@
-export interface IProject {
+export interface IKanbanProjects {
   id: number;
   name: string;
   description: string;
@@ -7,6 +7,11 @@ export interface IProject {
   picture: string;
   createdAt: string;
   updatedAt: string;
+  colorLogo1: string;
+  colorLogo2: string;
+}
+
+export interface IColorsProject {
   colorLogo1: string;
   colorLogo2: string;
 }

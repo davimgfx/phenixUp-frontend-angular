@@ -5,11 +5,13 @@ import {
   Output,
   EventEmitter,
 } from '@angular/core';
+import { ModalColorsProjectComponent } from '../modal-colors-project/modal-colors-project.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-project-options-menu',
   standalone: true,
-  imports: [],
+  imports: [ModalColorsProjectComponent, CommonModule],
   templateUrl: './project-options-menu.component.html',
   styleUrl: './project-options-menu.component.css',
 })
@@ -26,6 +28,8 @@ export class ProjectOptionsMenuComponent {
   //   }
   // }
 
+  isOpenModalColorsProject = false;
+
   private handleClickOutside = (event: Event): void => {
     const targetElement = event.target as HTMLElement;
     const clickedInside = this.elementRef.nativeElement.contains(targetElement);
@@ -40,5 +44,13 @@ export class ProjectOptionsMenuComponent {
 
   ngOnDestroy(): void {
     document.removeEventListener('click', this.handleClickOutside);
+  }
+
+  openModalColorsProject(): void {
+    this.isOpenModalColorsProject = true;
+  }
+
+  closeModalColorsProject(): void {
+    this.isOpenModalColorsProject = false;
   }
 }

@@ -1,6 +1,33 @@
+.modal-position {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.modal {
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  padding: 10px 20px;
+  border: 2px solid var(--gray);
+  border-radius: 0.5rem;
+  background: #ffffff;
+}
+
+.logo {
+  padding: 10px 0;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
 .colors-selectors {
   display: flex;
-  gap: 20px;
+  gap: 50px;
 }
 
 .semi-circles {
@@ -26,4 +53,19 @@
   height: 40px;
   width: 80px;
   border-radius: 0px 0px 150px 150px;
+}
+
+.background {
+  position: fixed;
+  inset: 0;
+  z-index: 9;
+  background-color: rgba(230, 230, 230, 0.548);
+  backdrop-filter: blur(8px);
+}
+
+.buttons {
+  display: flex;
+  gap: 10px;
+  padding-top: 30px;
+  justify-content: flex-end;
 }

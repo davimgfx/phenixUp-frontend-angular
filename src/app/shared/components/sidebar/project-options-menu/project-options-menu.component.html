@@ -3,7 +3,9 @@
     <span class="text-sm cursor-pointer">Alterar imagem do projeto</span>
   </li>
   <li>
-    <span class="text-sm cursor-pointer">Alterar cores da logo do projeto</span>
+    <span class="text-sm cursor-pointer" (click)="openModalColorsProject()"
+      >Alterar cores da logo do projeto</span
+    >
   </li>
   <li>
     <span class="text-sm cursor-pointer"
@@ -17,3 +19,6 @@
     <span class="text-sm cursor-pointer">Configurar permissões no projeto</span>
   </li>
 </nav>
+<div *ngIf="isOpenModalColorsProject">
+  <app-modal-colors-project (closeModal)="closeModalColorsProject()" />
+</div>
