@@ -28,6 +28,19 @@ export class KanbanService {
     });
   }
 
+  getAllProjectsInfos(token: string, clientId: String) {
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+    });
+
+    return this.http.get<IColorsProject[]>(
+      `${this.baseUrl}/projectInfos/${clientId}`,
+      {
+        headers,
+      }
+    );
+  }
+
   getProjectColors(token: string, clientId: String) {
     const headers = new HttpHeaders({
       Authorization: `Bearer ${token}`,

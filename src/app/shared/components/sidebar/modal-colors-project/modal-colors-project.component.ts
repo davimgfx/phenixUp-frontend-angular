@@ -92,8 +92,8 @@ export class ModalColorsProjectComponent {
         '1',
         this.color1,
         this.color2
-      ).subscribe((response) => {
-        console.log(response);
+      ).subscribe(() => {
+        this.closeModal.emit();
       });
     }
   }

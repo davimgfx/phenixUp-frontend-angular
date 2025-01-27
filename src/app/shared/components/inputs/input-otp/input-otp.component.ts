@@ -30,6 +30,7 @@ export class InputOTPComponent implements ControlValueAccessor {
   onChange: (value: string) => void = () => {};
   onTouched: () => void = () => {};
 
+
   // Implementação de ControlValueAccessor
   writeValue(value: string): void {
     this._value = value || '';
@@ -60,7 +61,6 @@ export class InputOTPComponent implements ControlValueAccessor {
       this._value = valueArray.join('');
 
       this.onChange(this._value); 
-      console.log(this._value);
 
       if (index < this.otpInputs.length - 1) {
         const nextInput = this.otpInputs.toArray()[index + 1].nativeElement;
@@ -101,4 +101,9 @@ export class InputOTPComponent implements ControlValueAccessor {
       input.nativeElement.value = valueArray[index] || '';
     });
   }
+
+  getValueInputOTP(): string {
+    return this._value;
+  }
+
 }

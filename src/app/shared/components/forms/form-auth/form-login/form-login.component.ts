@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ViewChild } from '@angular/core';
 import { ButtonComponent } from '../../../button/button.component';
 import { InputOTPComponent } from '../../../inputs/input-otp/input-otp.component';
 import { InputComponent } from '../../../inputs/input/input.component';
@@ -27,6 +27,7 @@ interface IUser {
     RouterLink,
     CommonModule,
     ReactiveFormsModule,
+    InputOTPComponent,
   ],
   templateUrl: './form-login.component.html',
   styleUrl: '../form-auth.component.css',
@@ -38,18 +39,17 @@ export class FormLoginComponent {
   authService = inject(AuthGoogleService);
   tokenService = inject(TokenService);
 
+  @ViewChild(InputOTPComponent) inputOTP!: InputOTPComponent;
+  
   currentStep: number = 1;
 
   form = this.fb.group({
     email: this.fb.control('', { validators: [Validators.required] }),
-    token: this.fb.control('', {
-      validators: [
-        Validators.required,
-        Validators.minLength(6),
-        Validators.maxLength(6),
-      ],
-    }),
   });
+
+  printValueInput(): void {
+    console.log(this.inputOTP.getValueInputOTP());
+ }
 
   nextStep(): void {
     if (this.currentStep < 2) {
@@ -72,7 +72,7 @@ export class FormLoginComponent {
     this.http
       .post<IUser>('http://localhost:8080/auth/login', {
         email: this.form.value.email,
-        token: this.form.value.token,
+        token: this.inputOTP.getValueInputOTP(),
       })
       .subscribe((user) => {
         this.tokenService.setToken(user.token);
