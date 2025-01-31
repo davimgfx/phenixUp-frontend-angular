@@ -7,6 +7,10 @@ type ButtonVariant = 'container' | 'outline' | 'text' | 'normal';
 
 type ButtonType = 'button' | 'submit' | 'reset';
 
+type disabledButton = boolean;
+
+type disabledButtonStyle = 'disabled' | null;
+
 @Component({
   selector: 'app-button',
   standalone: true,
@@ -19,4 +23,14 @@ export class ButtonComponent {
   @Input() variant: ButtonVariant = 'container';
   @Input() width: ButtonWidth = 'auto';
   @Input() type: ButtonType = 'button';
+//   @Input() disabled: disabledButton = false;
+
+//   disabledStyle: disabledButtonStyle = null;
+
+//   ngOnInit() {
+//     if(this.disabled) {
+//         this.disabledStyle = 'disabled';
+//     }
+//   }
+ 
 }

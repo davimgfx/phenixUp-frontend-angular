@@ -42,6 +42,7 @@ export class FormLoginComponent {
   @ViewChild(InputOTPComponent) inputOTP!: InputOTPComponent;
   
   currentStep: number = 1;
+  disabledSubmitButton: boolean = true;
 
   form = this.fb.group({
     email: this.fb.control('', { validators: [Validators.required] }),
@@ -55,12 +56,14 @@ export class FormLoginComponent {
     if (this.currentStep < 2) {
       this.createTokenByEmail();
       this.currentStep++;
+      this.disabledSubmitButton = false;
     }
   }
 
   previousStep(): void {
     if (this.currentStep > 1) {
       this.currentStep--;
+      this.disabledSubmitButton = true;
     }
   }
 
@@ -69,6 +72,8 @@ export class FormLoginComponent {
   }
 
   onSubmit(): void {
+    console.log(this.disabledSubmitButton);
+    console.log(this.form.value);
     this.http
       .post<IUser>('http://localhost:8080/auth/login', {
         email: this.form.value.email,

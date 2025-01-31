@@ -1,4 +1,4 @@
-<form action="" class="form" [formGroup]="form" (ngSubmit)="onSubmit()">
+<form action="" class="form" [formGroup]="form" >
   <!-- #1 -->
   <div *ngIf="currentStep === 1" class="form-div">
     <h2 class="form-title text-2xl">Login to your account</h2>
@@ -8,7 +8,6 @@
     </div>
 
     <app-button
-      class="button"
       width="full"
       variant="container"
       (click)="nextStep()"
@@ -27,7 +26,7 @@
           stroke-linecap="round"
           stroke-linejoin="round"></path></svg
     ></app-button>
-    <app-button width="full" variant="outline" (click)="signInWithGoogle()">
+    <app-button width="full" variant="outline" type="button" (click)="signInWithGoogle()">
       <svg
         width="21"
         height="20"
@@ -99,9 +98,12 @@
       width="full"
       variant="container"
       type="submit"
-      (click)="onSubmit()">
+      (click)="onSubmit()" 
+   
+      >
       Confirm code</app-button
     >
+    
   </div>
   <!-- END -->
 </form>

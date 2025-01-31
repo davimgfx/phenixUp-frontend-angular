@@ -5,7 +5,8 @@
     class="input-square text-xl"
     maxlength="1"
     (keydown)="onKeyDown($event, 0)"
-    (input)="onInputChange($event, 0)" />
+    (input)="onInputChange($event, 0)"
+    (paste)="onPaste($event)" />
 
   <input
     #otpInput
@@ -13,7 +14,8 @@
     class="input-square text-xl"
     maxlength="1"
     (keydown)="onKeyDown($event, 1)"
-    (input)="onInputChange($event, 1)" />
+    (input)="onInputChange($event, 1)"
+    (paste)="onPaste($event)" />
 
   <input
     #otpInput
@@ -21,7 +23,8 @@
     class="input-square text-xl"
     maxlength="1"
     (keydown)="onKeyDown($event, 2)"
-    (input)="onInputChange($event, 2)" />
+    (input)="onInputChange($event, 2)"
+    (paste)="onPaste($event)" />
 
   <span class="bar">-</span>
 
@@ -31,7 +34,8 @@
     class="input-square text-xl"
     maxlength="1"
     (keydown)="onKeyDown($event, 3)"
-    (input)="onInputChange($event, 3)" />
+    (input)="onInputChange($event, 3)"
+    (paste)="onPaste($event)" />
 
   <input
     #otpInput
@@ -39,7 +43,8 @@
     class="input-square text-xl"
     maxlength="1"
     (keydown)="onKeyDown($event, 4)"
-    (input)="onInputChange($event, 4)" />
+    (input)="onInputChange($event, 4)"
+    (paste)="onPaste($event)" />
 
   <input
     #otpInput
@@ -47,5 +52,6 @@
     class="input-square text-xl"
     maxlength="1"
     (keydown)="onKeyDown($event, 5)"
-    (input)="onInputChange($event, 5)" />
+    (input)="onInputChange($event, 5)"
+    (paste)="onPaste($event)" />
 </div>

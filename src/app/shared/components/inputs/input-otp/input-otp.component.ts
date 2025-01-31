@@ -22,14 +22,12 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
     },
   ],
 })
-
 export class InputOTPComponent implements ControlValueAccessor {
   @ViewChildren('otpInput') otpInputs!: QueryList<ElementRef>;
 
   private _value: string = ''; // Agora é uma string completa
   onChange: (value: string) => void = () => {};
   onTouched: () => void = () => {};
-
 
   // Implementação de ControlValueAccessor
   writeValue(value: string): void {
@@ -60,7 +58,7 @@ export class InputOTPComponent implements ControlValueAccessor {
       valueArray[index] = value;
       this._value = valueArray.join('');
 
-      this.onChange(this._value); 
+      this.onChange(this._value);
 
       if (index < this.otpInputs.length - 1) {
         const nextInput = this.otpInputs.toArray()[index + 1].nativeElement;
@@ -72,7 +70,13 @@ export class InputOTPComponent implements ControlValueAccessor {
   onKeyDown(event: KeyboardEvent, index: number): void {
     const input = this.otpInputs.toArray()[index]
       .nativeElement as HTMLInputElement;
-    const allowedKeys = ['Backspace', 'ArrowLeft', 'ArrowRight', 'Delete', 'Tab'];
+    const allowedKeys = [
+      'Backspace',
+      'ArrowLeft',
+      'ArrowRight',
+      'Delete',
+      'Tab',
+    ];
 
     if (!allowedKeys.includes(event.key) && !/^[0-9]$/.test(event.key)) {
       event.preventDefault();
@@ -106,4 +110,28 @@ export class InputOTPComponent implements ControlValueAccessor {
     return this._value;
   }
 
+  onPaste(event: ClipboardEvent): void {
+    event.preventDefault();
+
+    console.log(event)
+
+    const pasteData = event.clipboardData?.getData('text') || '';
+    const digits = pasteData.replace(/\D/g, '').slice(0, 6); // Remove caracteres não numéricos e limita a 6 dígitos
+
+    if (!digits) return;
+
+    this._value = digits;
+    this.onChange(this._value); // Atualiza o `ControlValueAccessor`
+
+    // Preenche os inputs com os valores colados
+    this.otpInputs.forEach((input, index) => {
+      input.nativeElement.value = digits[index] || '';
+    });
+
+    // Move o foco para o último campo preenchido
+    const lastIndex = digits.length - 1;
+    if (lastIndex >= 0 && lastIndex < this.otpInputs.length) {
+      this.otpInputs.toArray()[lastIndex].nativeElement.focus();
+    }
+  }
 }

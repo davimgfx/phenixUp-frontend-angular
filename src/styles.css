@@ -36,6 +36,7 @@ a:active {
   --second_hover: #b11bac;
   --purple_transparent: #4e46e450;
   --button_color: #7F56D9;
+  --disabled_button: #7f56d950;
   --button_color_hover: #3e2b66;
   --text_link: #4F46E4;
   --text_link_hover: #24206b;
