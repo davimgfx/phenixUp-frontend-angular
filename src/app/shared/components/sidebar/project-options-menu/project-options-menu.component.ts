@@ -20,14 +20,6 @@ export class ProjectOptionsMenuComponent {
 
   constructor(private elementRef: ElementRef) {}
 
-  // @HostListener('document:click', ['$event.target'])
-  // onClickOutside(targetElement: HTMLElement): void {
-  //   const clickedInside = this.elementRef.nativeElement.contains(targetElement);
-  //   if (!clickedInside) {
-  //     this.closeModal.emit(); // Emite o evento para fechar o modal
-  //   }
-  // }
-
   isOpenModalColorsProject = false;
 
   private handleClickOutside = (event: Event): void => {

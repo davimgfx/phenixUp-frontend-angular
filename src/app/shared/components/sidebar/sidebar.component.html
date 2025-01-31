@@ -30,7 +30,7 @@
         </svg>
 
         <app-project-options-menu
-          *ngIf="isModalOpen"
+          *ngIf="isModalManyOptions"
           (closeModal)="onModalClose()"></app-project-options-menu>
       </span>
 
@@ -39,7 +39,7 @@
       }}</span>
     </div>
   </ul>
-  <ul>
+  <ul (click)="openModalChooseProject()">
     <span>Mudar de projeto</span>
   </ul>
   <ul>
@@ -49,3 +49,6 @@
     <span>Settings</span>
   </ul>
 </nav>
+<div *ngIf="isOpenModalChooseProject">
+  <app-modal-choose-project (closeModal)="closeModalChooseProject()" />
+</div>

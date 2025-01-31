@@ -17,6 +17,12 @@
   background: #ffffff;
 }
 
+.modal-header{
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
 .logo {
   padding: 10px 0;
   display: flex;

@@ -54,6 +54,18 @@ export class KanbanService {
     );
   }
 
+  getFirstProjectCreated(token: string, clientId: String) {
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+    });
+
+    return this.http.get<IKanbanProjects>(
+      `${this.baseUrl}/firstProject/${clientId}`,
+      {
+        headers,
+      })
+  }
+
   updateProjectColors(
     token: string,
     projectId: string,
@@ -77,4 +89,16 @@ export class KanbanService {
       }
     );
   }
+
+  setIdProjectInLocalStorage(projectId: string): void {
+    localStorage.setItem('projectId', projectId);
+  }
+
+  getProjectIdInLocalStorage(): string | null {
+    return localStorage.getItem('projectId');
+  }
+
+   removeProjectIdInLocalStorage(): void {
+    localStorage.removeItem('projectId');
+   }
 }
