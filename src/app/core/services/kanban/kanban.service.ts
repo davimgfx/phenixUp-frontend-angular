@@ -41,13 +41,13 @@ export class KanbanService {
     );
   }
 
-  getProjectColors(token: string, clientId: String) {
+  getProjectColors(token: string, projectId: String) {
     const headers = new HttpHeaders({
       Authorization: `Bearer ${token}`,
     });
 
-    return this.http.get<IColorsProject[]>(
-      `${this.baseUrl}/projectColor/${clientId}`,
+    return this.http.get<IColorsProject>(
+      `${this.baseUrl}/projectColor/${projectId}`,
       {
         headers,
       }

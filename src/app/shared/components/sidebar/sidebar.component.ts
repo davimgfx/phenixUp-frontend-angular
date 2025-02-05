@@ -64,25 +64,25 @@ export class SidebarComponent {
 
   ngOnInit(): void {
     document.addEventListener('click', this.handleClickOutside);
-    const token = this.tokenService.getToken();
+    // const token = this.tokenService.getToken();
 
-    if (token) {
-      this.kanbanService
-        .getAllProjectsInfos(token, this.tokenService.decodeToken().id)
-        .pipe(
-          tap((data) => {
-            console.log(data);
-          }),
-          catchError((error) => {
-            console.error('Erro ao carregar os projetos:', error);
-            // Return an empty observable to avoid breaking the stream
-            return of([]);
-          }),
-          finalize(() => {
-            // Perform any cleanup or final actions if needed
-          })
-        )
-        .subscribe();
-    }
+    // if (token) {
+    //   this.kanbanService
+    //     .getAllProjectsInfos(token, this.tokenService.decodeToken().id)
+    //     .pipe(
+    //       tap((data) => {
+    //         console.log(data);
+    //       }),
+    //       catchError((error) => {
+    //         console.error('Erro ao carregar os projetos:', error);
+    //         // Return an empty observable to avoid breaking the stream
+    //         return of([]);
+    //       }),
+    //       finalize(() => {
+    //         // Perform any cleanup or final actions if needed
+    //       })
+    //     )
+    //     .subscribe();
+    // }
   }
 }

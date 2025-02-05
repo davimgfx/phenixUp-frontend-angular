@@ -1,30 +1,16 @@
 <!-- <div *ngIf="isLoggedIn"> -->
 <section class="kanban">
   <app-sidebar
-    [projectName]="projects[0].name"
-    [projectDescription]="projects[0].description"
-    [projectColor1]="projects[0].colorLogo1"
-    [projectColor2]="projects[0].colorLogo2" />
+    [projectName]="project.name"
+    [projectDescription]="project.description"
+    [projectColor1]="project.colorLogo1"
+    [projectColor2]="project.colorLogo2" />
   <p>kanban works!</p>
   <!-- <span>{{ userProfile.name }}</span>
   <span>{{ userProfile.email }}</span> -->
   <!-- <span (click)="logoutWithGoogle()">Logout</span> -->
   <div *ngIf="loading">Loading...</div>
   <div *ngIf="errorToken">Houve um erro pois não existe token</div>
-  <div *ngIf="!loading">
-    <ul>
-      <li *ngFor="let project of projects">
-        <h3>{{ project.id }}</h3>
-        <p>{{ project.name }}</p>
-        <p>{{ project.description }}</p>
-        <p>{{ project.owner_id }}</p>
-        <p>{{ project.code }}</p>
-        <p>{{ project.picture }}</p>
-        <p>{{ project.createdAt }}</p>
-        <p>{{ project.updatedAt }}</p>
-      </li>
-    </ul>
-  </div>
   <span (click)="logout()">Logout</span>
 </section>
 <!-- </div> -->

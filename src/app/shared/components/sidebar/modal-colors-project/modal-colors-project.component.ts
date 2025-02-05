@@ -27,7 +27,6 @@ export class ModalColorsProjectComponent {
 
   color1: string = '#000000';
   color2: string = '#000000';
-  savedColors: { color1: string; color2: string } | null = null;
   isPickerOpen: boolean = true;
   isBrowser: boolean;
   clickOutsideListener: () => void = () => {};
@@ -45,11 +44,15 @@ export class ModalColorsProjectComponent {
 
   ngOnInit(): void {
     const token = this.tokenService.getToken();
+    const projectId = this.KanbanService.getProjectIdInLocalStorage();
 
-    if (token) {
-      this.KanbanService.getProjectColors(token, '1').subscribe((response) => {
-        this.color1 = response[0].colorLogo1;
-        this.color2 = response[0].colorLogo2;
+    if (token && projectId) {
+      this.KanbanService.getProjectColors(token, projectId).subscribe((response) => {
+        
+        if(response){
+            this.color1 = response.colorLogo1;
+            this.color2 = response.colorLogo2;
+        }
       });
     }
   }
@@ -85,11 +88,12 @@ export class ModalColorsProjectComponent {
 
   onSubmitted(): void {
     const token = this.tokenService.getToken();
+    const projectId = this.KanbanService.getProjectIdInLocalStorage();
 
-    if (token) {
+    if (token && projectId) {
       this.KanbanService.updateProjectColors(
         token,
-        '1',
+        projectId,
         this.color1,
         this.color2
       ).subscribe(() => {

@@ -19,7 +19,14 @@ export class KanbanComponent {
   // userProfile: any;
   loading: boolean = true;
   errorToken: boolean = false;
-  projects: IProject[] = [];
+  project: IProject = {
+    id: 0,
+    name: '',
+    description: '',
+    code: 0,
+    colorLogo1: '',
+    colorLogo2: '',
+  };
   color1: string = '#000000';
   color2: string = '#000000';
   // decodedToken: string | null = null;
@@ -76,11 +83,11 @@ export class KanbanComponent {
 
     if (token) {
       this.kanbanService
-        .getAllProjects(token, this.tokenService.decodeToken().id)
+        .getFirstProjectCreated(token, this.tokenService.decodeToken().id)
         .subscribe(
           (data) => {
-            this.projects = data; // Atribui os dados dos projetos
-            console.log(data);
+             this.project = data; // Atribui os dados dos projetos
+            this.kanbanService.setIdProjectInLocalStorage(String(data.id));
             this.loading = false; // Desativa o estado de carregamento quando os dados forem carregados
           },
           (error) => {
