@@ -6,11 +6,11 @@ import { TokenService } from '../../services/token/token.service';
 export const kanbanProjectsResolver: ResolveFn<any> = (route, state) => {
   const tokenService = inject(TokenService);
   const token = tokenService.getToken();
-  const clientId = tokenService.decodeToken().id;
+  const clientObjectDecoded = tokenService.decodeToken();
 
-  if (token && clientId) {
+  if (token && clientObjectDecoded) {
     const kanbanService = inject(KanbanService);
-    return kanbanService.getAllProjects(token, clientId); 
+    return kanbanService.getAllProjects(token, String(clientObjectDecoded.id)); 
   } else {
     return []; 
   }

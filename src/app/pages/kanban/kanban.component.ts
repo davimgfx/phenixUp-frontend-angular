@@ -4,6 +4,7 @@ import { SidebarComponent } from '../../shared/components/sidebar/sidebar.compon
 import { KanbanService } from '../../core/services/kanban/kanban.service';
 import { IProject } from '../../core/models/ProjectModels';
 import { TokenService } from '../../core/services/token/token.service';
+import { ITokenDecoded } from '../../core/services/token/token.interface';
 
 @Component({
   selector: 'app-kanban',
@@ -31,7 +32,7 @@ export class KanbanComponent {
   color2: string = '#000000';
   // decodedToken: string | null = null;
 
-  decodedToken: any;
+  decodedToken: ITokenDecoded | null = null;
 
   ngOnInit(): void {
     this.loadProjects();
@@ -75,15 +76,16 @@ export class KanbanComponent {
 
   loadProjects(): void {
     const token = this.tokenService.getToken();
+    const decodedTokenId = this.tokenService.decodeToken()
 
     if (token === null) {
       this.loading = false;
       this.errorToken = true;
     }
 
-    if (token) {
+    if (token && decodedTokenId) {
       this.kanbanService
-        .getFirstProjectCreated(token, this.tokenService.decodeToken().id)
+        .getFirstProjectCreated(token, String(decodedTokenId.id))
         .subscribe(
           (data) => {
              this.project = data; // Atribui os dados dos projetos

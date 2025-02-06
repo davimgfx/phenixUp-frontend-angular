@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { IColorsProject, IKanbanProjects } from './types';
+import { IColorsProject, IKanbanProjects } from './kanban.interface';
 
 @Injectable({
   providedIn: 'root',

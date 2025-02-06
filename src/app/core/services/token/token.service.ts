@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { jwtDecode } from 'jwt-decode';
+import { ITokenDecoded } from './token.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -18,12 +19,12 @@ export class TokenService {
     localStorage.setItem('token', token); // Armazena o token no localStorage
   }
 
-  decodeToken(): any {
+  decodeToken(): ITokenDecoded | null {
     const token = this.getToken();
     if (token) {
       try {
         const decoded = jwtDecode(token); // Decodifica o JWT
-        return decoded; // Retorna os dados decodificados
+        return decoded as ITokenDecoded; // Retorna os dados decodificados
       } catch (error) {
         console.error('Erro ao decodificar o token:', error);
         return null; // Caso o token seja inválido ou tenha erro na decodificação

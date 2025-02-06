@@ -10,6 +10,8 @@ import {
 } from '@angular/core';
 import { ButtonComponent } from "../../button/button.component";
 import { isPlatformBrowser } from '@angular/common';
+import { TokenService } from '../../../../core/services/token/token.service';
+import { KanbanService } from '../../../../core/services/kanban/kanban.service';
 
 @Component({
   selector: 'app-modal-choose-project',
@@ -24,16 +26,31 @@ export class ModalChooseProjectComponent {
   @ViewChild('modal', { static: false }) modal!: ElementRef<HTMLDivElement>;
 
   isBrowser: boolean;
+  decodedToken: any;
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: object,
-    private renderer: Renderer2
+    private renderer: Renderer2,
+    private tokenService: TokenService,
+    private kanbanService: KanbanService
   ) {
     this.isBrowser = isPlatformBrowser(this.platformId);
   }
 
   close(): void {
     this.closeModal.emit(); // Emite o evento para fechar o modal
+  }
+
+  ngOnInit(): void{
+    const token = this.tokenService.getToken();
+    this.decodedToken = this.tokenService.decodeToken();
+    if (token && this.decodedToken) {
+        this.kanbanService.getAllProjectsInfos(token, String(this.decodedToken.id)).subscribe((response) => {
+            console.log(response);
+        });
+    } else {
+      console.log('Nenhum token encontrado no localStorage');
+    }
   }
 
   ngAfterViewInit(): void {
